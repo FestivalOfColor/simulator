@@ -5,7 +5,7 @@
 ## CMakeLists
 ##
 
-project(BPCE_all_banks_simulator)
+project(all_banks_simulator)
 
 cmake_minimum_required(VERSION 2.6)
 
