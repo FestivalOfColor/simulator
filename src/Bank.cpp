@@ -28,7 +28,7 @@ void            Bank::append_cat(std::string name)
 
         for (int i = 0; i < _cat.size(); i++)
         {
-                map_it == _cat[i].find(name);
+                map_it = _cat[i].find(name);
                 if (map_it != _cat[i].end()) {
                         std::cout << "existing cat " << name << std::endl;
                         found = true;
