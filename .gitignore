@@ -31,12 +31,12 @@
 *.out
 *.app
 
-# VSCode folder
-.vscode
-
-#CMake generated files
+# CMake build files
 build
 bin
 
-#Test files
+# Test files
 data
+
+# VSCode generated files
+.vscode
