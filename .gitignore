@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# VSCode folder
+.vscode
+
+#CMake generated files
+build
+bin
+
+#Test files
+data
