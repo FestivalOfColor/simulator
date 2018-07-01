@@ -22,5 +22,6 @@ int     main(int ac, char **av)
                 return 1;
         }
         file.set_file(av[1]);
-        file.find_categories();
+        file.find_banks();
+        file.print_banks();
 }

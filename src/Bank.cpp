@@ -9,34 +9,41 @@
 
 Bank::Bank(std::string name) : _name(name)
 {
+        _siege = new t_b_type;
+        _agency = new t_b_type;
+        _siege->type = "siege";
+        _agency->type = "agency";
+        std::cout << "created bank " << _name << std::endl;
 }
 
 Bank::~Bank()
 {
 }
 
-std::vector<std::map<std::string, t_cat *>>            Bank::get_cat()
+void            Bank::append_new_cat(std::string name)
 {
-        return _cat;
+        _siege->cat.push_back(new Categorie(name));
+        _agency->cat.push_back(new Categorie(name));
+        std::cout << "append cat " << name << " to bank " << _name << std::endl;
 }
 
-void            Bank::append_cat(std::string name)
+std::string     Bank::get_name()
 {
-        auto                            map_it = _cat[0].end();
-        std::map<std::string, t_cat *>  tmp;
-        bool                            found = false;
+        return _name;
+}
 
-        for (int i = 0; i < _cat.size(); i++)
-        {
-                map_it = _cat[i].find(name);
-                if (map_it != _cat[i].end()) {
-                        std::cout << "existing cat " << name << std::endl;
-                        found = true;
-                }
-        }
-        if (!found) {
-                tmp[name] = new t_cat;
-                _cat.push_back(tmp);
-                std::cout << "created cat " << name << std::endl;
-        }
+void            Bank::set_name(std::string name)
+{
+        _name = name;
+}
+
+std::ostream     &operator<<(std::ostream &out, Bank *bank)
+{
+        out << "Bank: " << bank->get_name() << std::endl;
+        out << "\tSiege Categories:" << std::endl;
+        for (int i = 0; i < bank->_siege->cat.size(); i ++)
+                out << "\t\t" << bank->_siege->cat.at(i)->get_name() << std::endl;
+        out << "\tAgency Categories:" << std::endl;
+        for (int i = 0; i < bank->_agency->cat.size(); i ++)
+                out << "\t\t" << bank->_agency->cat.at(i)->get_name() << std::endl;
 }

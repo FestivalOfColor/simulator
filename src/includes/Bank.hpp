@@ -13,27 +13,30 @@
 #include <vector>
 #include <map>
 
-typedef struct	s_cat {
-	std::string					name;
-	std::vector<std::map<std::string, int>>		volumes;
-}		t_cat;
+#include "Categorie.hpp"
+
+typedef struct	s_bank_type {
+	std::string			type;
+	std::vector<Categorie *>	cat;
+}		t_b_type;
 
 class Bank {
 public:
 	Bank(std::string name);
 	~Bank();
+	void			append_new_cat(std::string cat_name);
 
-	std::string						get_name();
-	std::vector<std::map<std::string, t_cat *>>		get_cat();
+	std::string		get_name();
 
-	void							set_name(std::string);
+	void			set_name(std::string);
 
-	void							append_cat(std::string name);
+	friend std::ostream		&operator << (std::ostream &out,Bank *bank);
 
 protected:
 private:
-	std::string					_name;
-	std::vector<std::map<std::string, t_cat *>>	_cat;
+	std::string		_name;
+	t_b_type		*_siege;
+	t_b_type		*_agency;
 };
 
 #endif /* !BANK_HPP_ */
